@@ -42,4 +42,5 @@ testem.log
 Thumbs.db
 
 # Api key
-.env
+src/app/env.prod.ts
+src/app/env.ts
