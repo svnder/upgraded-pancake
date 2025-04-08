@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from './env/env';
+import { environment } from './env';
 import { ApiService } from './api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,8 +22,8 @@ export class AppComponent {
   getWeather() {
     if (this.cityName) {
       this.ApiService.getWeather(this.cityName, environment.apiKey).subscribe(
-        (weatherData) => {
-          this.weatherData = weatherData;
+        (data) => {
+          this.weatherData = data;
           this.errorMsg = '';
         },
         (err) => {
