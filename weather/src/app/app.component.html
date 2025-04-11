@@ -1,12 +1,2 @@
-<div>
-    <input type="text" [(ngModel)]="cityName" placeholder="Enter city name" />
-    <button (click)="getWeather()">Get Weather</button>
 
-</div>
 
-<div *ngIf='cityName'>
-    <h1>Weather</h1>
-    <h2>{{ weatherData.name }}</h2>
-    <h2>{{ weatherData.main.temp }}</h2>
-    <h2>{{ `Feels like ${weatherData.main.feels_like}` }}</h2>
-</div>

@@ -3,39 +3,47 @@ import { environment } from './env';
 import { ApiService } from './api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Input } from '@angular/core';
+import { HomeComponent } from './home/home.component';
 
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <main>
+      <header class='logo'>
+      </header>
+    </main>
+    <section class='content'>
+      <app-home></app-home>
+    </section>
+  `,
   styleUrl: './app.component.css',
-  imports : [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HomeComponent],
 })
 export class AppComponent {
   cityName: string = '';
   weatherData: any;
-  errorMsg: string = '';
+  h1: string = 'Weather App';
+  @Input() searchCity: string = 'London';
 
 
   constructor(private ApiService: ApiService) { }
 
   getWeather() {
-    if (this.cityName) {
-      this.ApiService.getWeather(this.cityName, environment.apiKey).subscribe(
-        (data) => {
-          this.weatherData = data;
-          this.errorMsg = '';
-        },
-        (err) => {
-          this.errorMsg = 'City not found. Please try again.';
-          this.weatherData = null;
-        }
-      );
-    } else {
-      this.errorMsg = 'Please enter a city name.';
-      this.weatherData = null;
-    }
+    this.ApiService.getWeather(this.cityName).subscribe(
+      (weatherData) => {
+        this.weatherData = weatherData;
+      }
+    )
+  }
+  ngOnInit() {
+    this.ApiService.getWeather(this.cityName).subscribe(
+      (weatherData) => {
+        this.weatherData = weatherData;
+      }
+    )
+
   }
 
 }
-
