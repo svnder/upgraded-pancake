@@ -9,14 +9,13 @@ import { environment } from './env';
 export class ApiService {
   private apiKey = environment.apiKey;
   private apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
-  test = 'hello world';
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
   
-  getWeather(city:string, apiKey:string):Observable<any> {
+  getWeather(city:string):Observable<any> {
     const url = `${this.apiUrl}?q=${city}&appid=${this.apiKey}`;
     console.log(`Got data from ${url}`);
-    console.log('API SERVICE IS WORKING');
     return this.http.get(url);
   }
 }

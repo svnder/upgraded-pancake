@@ -1,13 +1,23 @@
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { WeatherdataComponent } from './weatherdata/weatherdata.component';
+import { HomeComponent } from './home/home.component';
 import { HttpClient } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-
 @NgModule({
-    declarations: [AppComponent],
-    imports: [BrowserModule, HttpClient, CommonModule],
+    declarations: [
+        AppComponent, 
+        WeatherdataComponent, 
+        HomeComponent,
+        ReactiveFormsModule
+    ],
+    imports: [
+        FormsModule,
+        BrowserModule, 
+        HttpClient, 
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
