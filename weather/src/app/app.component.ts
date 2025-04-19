@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { environment } from './env';
 import { ApiService } from './api.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Input } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 
@@ -19,7 +18,7 @@ import { HomeComponent } from './home/home.component';
     </section>
   `,
   styleUrl: './app.component.css',
-  imports: [CommonModule, FormsModule, HomeComponent],
+  imports: [CommonModule, HomeComponent],
 })
 export class AppComponent {
   cityName: string = '';
